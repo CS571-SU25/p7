@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { HashRouter, Route, Routes } from 'react-router';
 
 import SingingLayout from './SingingLayout';
 import LandingPage from '../content/LandingPage';
@@ -8,7 +8,7 @@ import AboutPage from '../content/AboutPage';
 
 function SingingApp() {
   return (
-    <BrowserRouter basename="/p7">
+    <HashRouter basename="/p7">
       <Routes>
         <Route path="/" element={<SingingLayout />}>
           <Route index element={<LandingPage />} />
@@ -16,7 +16,7 @@ function SingingApp() {
           <Route path="/about" element={<AboutPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
