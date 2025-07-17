@@ -1,0 +1,32 @@
+{
+  "name": "singing-through-city-server",
+  "version": "1.0.0",
+  "description": "Backend server for Singing Through the City application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run build",
+    "serve": "npm run build && npm start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "gh-pages": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "mapbox",
+    "hong-kong",
+    "music",
+    "geography"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://cs571-su25.github.io/p7/"
+}
