@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "cd p7-project && npm run build",
+    "build": "npm run build",
     "serve": "npm run build && npm start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
