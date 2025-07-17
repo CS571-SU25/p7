@@ -1,9 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { AppProvider, MapProvider, AudioProvider } from './contexts';
+import SingingApp from './components/structural/SingingApp.jsx';
 
-createRoot(document.getElementById('root')).render(
-    <App />
-)
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <AppProvider>
+    <MapProvider>
+      <AudioProvider>
+        <SingingApp />
+      </AudioProvider>
+    </MapProvider>
+  </AppProvider>
+);

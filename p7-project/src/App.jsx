@@ -1,34 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
+import { useApp } from './contexts'
+import {
+  Layout,
+  LandingPage,
+  Map,
+  AboutPage,
+  SongPopup,
+  FilterControls,
+  InformationCard
+} from './components'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { currentPage } = useApp()
+
+  const handleGetStarted = () => {
+    // This will be handled by the AppContext
+  }
+
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case 'landing':
+        return <LandingPage onGetStarted={handleGetStarted} />
+      case 'map':
+        return (
+          <div className="map-page">
+            <div className="map-container">
+              <Map />
+            </div>
+            <div className="sidebar">
+              <FilterControls />
+              <InformationCard />
+            </div>
+          </div>
+        )
+      case 'about':
+        return <AboutPage />
+      default:
+        return <LandingPage onGetStarted={handleGetStarted} />
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Layout>
+      {renderCurrentPage()}
+    </Layout>
   )
 }
 

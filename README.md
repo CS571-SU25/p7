@@ -7,13 +7,11 @@
 - **Interactive Map of Hong Kong:**
   The core of the site is a map centered on Hong Kong. Each clickable pin marks a place mentioned in a song lyric.
 
-- **Rich Song & Place Pop-ups:**
+- **Pop-ups:**
   Clicking a pin reveals:
   - The lyric (in Chinese and English)
   - Song title and artist
-  - Album cover image
   - Link to the song on YouTube
-  - A short historical note about the location’s cultural context
 
 - **Filter Controls:**
   Explore the map by artist, district, or decade to discover connections between music and place.
