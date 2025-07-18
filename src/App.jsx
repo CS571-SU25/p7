@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router'
 import { useApp } from './contexts'
 import {
   Layout,

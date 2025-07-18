@@ -5,10 +5,7 @@ import SingingApp from './components/structural/SingingApp.jsx';
 
 import './index.css';
 
-console.log('Starting React app...');
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log('Root element:', document.getElementById('root'));
 
 root.render(
   <AppProvider>
