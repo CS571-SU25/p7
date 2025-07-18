@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useApp } from './contexts'
 import {
   Layout,
@@ -12,39 +13,32 @@ import {
 } from './components'
 
 function App() {
-  const { currentPage } = useApp()
+  const { setCurrentPage } = useApp()
 
   const handleGetStarted = () => {
-    // This will be handled by the AppContext
-  }
-
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case 'landing':
-        return <LandingPage onGetStarted={handleGetStarted} />
-      case 'map':
-        return (
-          <div className="map-page">
-            <div className="map-container">
-              <Map />
-            </div>
-            <div className="sidebar">
-              <FilterControls />
-              <InformationCard />
-            </div>
-          </div>
-        )
-      case 'about':
-        return <AboutPage />
-      default:
-        return <LandingPage onGetStarted={handleGetStarted} />
-    }
+    setCurrentPage('map')
   }
 
   return (
-    <Layout>
-      {renderCurrentPage()}
-    </Layout>
+    <HashRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<LandingPage onGetStarted={handleGetStarted} />} />
+          <Route path="/map" element={
+            <div className="map-page">
+              <div className="map-container">
+                <Map />
+              </div>
+              <div className="sidebar">
+                <FilterControls />
+                <InformationCard />
+              </div>
+            </div>
+          } />
+          <Route path="/about-us" element={<AboutPage />} />
+        </Routes>
+      </Layout>
+    </HashRouter>
   )
 }
 
