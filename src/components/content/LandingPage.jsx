@@ -40,7 +40,9 @@ const LandingPage = () => {
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h3 className="h5">🎵 Song Stories</h3>
+                    <h4 className="h5">
+                      <span role="img" aria-label="Music note">🎵</span> Song Stories
+                    </h4>
                     <p className="text-muted">Lyrics in Chinese and English with song details</p>
                   </Card.Body>
                 </Card>
@@ -48,7 +50,9 @@ const LandingPage = () => {
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h3 className="h5">🗺️ Interactive Map</h3>
+                    <h4 className="h5">
+                      <span role="img" aria-label="World map">🗺️</span> Interactive Map
+                    </h4>
                     <p className="text-muted">Click pins to explore Hong Kong's musical geography</p>
                   </Card.Body>
                 </Card>
@@ -56,7 +60,9 @@ const LandingPage = () => {
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h3 className="h5">📖 Cultural Context</h3>
+                    <h4 className="h5">
+                      <span role="img" aria-label="Book">📖</span> Cultural Context
+                    </h4>
                     <p className="text-muted">Historical notes about each location's significance</p>
                   </Card.Body>
                 </Card>

@@ -9,7 +9,7 @@ const SongPopup = ({ song, place, onClose }) => {
     <div className="song-popup">
       <div className="popup-header">
         <h4>{song?.title || 'Song Title'}</h4>
-        <button onClick={onClose} className="close-btn">×</button>
+        <button onClick={onClose} className="close-btn" aria-label="Close popup">×</button>
       </div>
       <div className="popup-content">
         <div className="song-info">
@@ -28,8 +28,9 @@ const SongPopup = ({ song, place, onClose }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="youtube-btn"
+              aria-label="Listen to song on YouTube"
             >
-              🎵 Listen on YouTube
+              <span role="img" aria-label="Music note">🎵</span> Listen on YouTube
             </a>
           </div>
         )}

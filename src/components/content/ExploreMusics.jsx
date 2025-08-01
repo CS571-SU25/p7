@@ -188,12 +188,13 @@ const ExploreMusics = () => {
 
           {/* Results Section */}
           <div className="results-section">
-            {filteredSongs.length === 0 ? (
+            {filteredSongs.length === 0 && !loading && (
               <div className="text-center py-5">
                 <h3>No songs found</h3>
-                <p className="text-muted">Try adjusting your search terms</p>
+                <p className="text-muted">Try adjusting your search terms or filters</p>
               </div>
-            ) : groupBySong ? (
+            )}
+            {groupBySong ? (
               // Grouped View
               <div className="grouped-results">
                 {(() => {
@@ -215,10 +216,8 @@ const ExploreMusics = () => {
                         {hasMultipleVersions && (
                           <div className="group-header mb-3">
                             <h4 className="group-title">
-                              {firstSong.song} - {firstSong.Singer}
-                              <Badge bg="warning" text="dark" className="ms-2">
-                                {songs.length} Location Versions
-                              </Badge>
+                              <span role="img" aria-label="Map pin">📍</span> Multi-location Version
+                              <Badge bg="info" className="ms-2">{songs.length} versions</Badge>
                             </h4>
                           </div>
                         )}
@@ -253,7 +252,9 @@ const ExploreMusics = () => {
                                 <Card.Body className="song-card-body">
                                   <div className="song-info-grid">
                                     <div className="info-item">
-                                      <strong>🎤 歌手/Artist:</strong>
+                                      <strong>
+                                        <span role="img" aria-label="Microphone">🎤</span> 歌手/Artist:
+                                      </strong>
                                       <div className="artist-names">
                                         {formatNames(song.Singer)}
                                         {song.singer_en && (
@@ -265,7 +266,9 @@ const ExploreMusics = () => {
                                     </div>
 
                                     <div className="info-item">
-                                      <strong>📍 地点/Location:</strong>
+                                      <strong>
+                                        <span role="img" aria-label="Map pin">📍</span> 地点/Location:
+                                      </strong>
                                       <div className="location-names">
                                         <span>{song.location_name || 'Unknown'}</span>
                                         {song.location_name_en && (
@@ -277,12 +280,16 @@ const ExploreMusics = () => {
                                     </div>
 
                                     <div className="info-item">
-                                      <strong>🗺️ 坐标/Coordinates:</strong>
+                                      <strong>
+                                        <span role="img" aria-label="World map">🗺️</span> 坐标/Coordinates:
+                                      </strong>
                                       <span>{song.location_x}, {song.location_y}</span>
                                     </div>
 
                                     <div className="info-item">
-                                      <strong>💿 专辑/Album:</strong>
+                                      <strong>
+                                        <span role="img" aria-label="Compact disc">💿</span> 专辑/Album:
+                                      </strong>
                                       <span>{song.album || 'Unknown'}</span>
                                     </div>
 
@@ -380,7 +387,9 @@ const ExploreMusics = () => {
                       <Card.Body className="song-card-body">
                         <div className="song-info-grid">
                           <div className="info-item">
-                            <strong>🎤 歌手/Artist:</strong>
+                            <strong>
+                              <span role="img" aria-label="Microphone">🎤</span> 歌手/Artist:
+                            </strong>
                             <div className="artist-names">
                               {formatNames(song.Singer)}
                               {song.singer_en && (
@@ -392,7 +401,9 @@ const ExploreMusics = () => {
                           </div>
 
                           <div className="info-item">
-                            <strong>📍 地点/Location:</strong>
+                            <strong>
+                              <span role="img" aria-label="Map pin">📍</span> 地点/Location:
+                            </strong>
                             <div className="location-names">
                               <span>{song.location_name || 'Unknown'}</span>
                               {song.location_name_en && (
@@ -404,12 +415,16 @@ const ExploreMusics = () => {
                           </div>
 
                           <div className="info-item">
-                            <strong>🗺️ 坐标/Coordinates:</strong>
+                            <strong>
+                              <span role="img" aria-label="World map">🗺️</span> 坐标/Coordinates:
+                            </strong>
                             <span>{song.location_x}, {song.location_y}</span>
                           </div>
 
                           <div className="info-item">
-                            <strong>💿 专辑/Album:</strong>
+                            <strong>
+                              <span role="img" aria-label="Compact disc">💿</span> 专辑/Album:
+                            </strong>
                             <span>{song.album || 'Unknown'}</span>
                           </div>
 

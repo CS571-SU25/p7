@@ -24,7 +24,7 @@ function SingingLayout() {
         <Container>
           <Navbar.Brand as={Link} to="/" className="nav-brand">
             <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800, color: 'white' }}>
-              🎵 Hong Kong Music Atlas
+              <span role="img" aria-label="Music note">🎵</span> Hong Kong Music Atlas
             </h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

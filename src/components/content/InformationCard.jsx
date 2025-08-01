@@ -56,7 +56,9 @@ const InformationCard = () => {
   return (
     <Card>
       <Card.Header>
-        <h5 className="mb-0">🎵 Music Locations</h5>
+        <h5 className="mb-0">
+          <span role="img" aria-label="Music note">🎵</span> Music Locations
+        </h5>
       </Card.Header>
       <Card.Body>
         <p className="mb-2">
@@ -70,8 +72,12 @@ const InformationCard = () => {
             </>
           )}
         </p>
-        <p className="mb-2">📍 Click on markers to explore songs and locations</p>
-        <p className="mb-3">🎤 Use filters to discover songs by artist, location, or decade</p>
+        <p className="mb-2">
+          <span role="img" aria-label="Map pin">📍</span> Click on markers to explore songs and locations
+        </p>
+        <p className="mb-3">
+          <span role="img" aria-label="Microphone">🎤</span> Use filters to discover songs by artist, location, or decade
+        </p>
 
         {hasActiveFilters && (
           <Alert variant="info" className="mb-3">

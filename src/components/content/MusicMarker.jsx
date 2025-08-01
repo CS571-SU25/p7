@@ -60,7 +60,7 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
   const markerEl = document.createElement('div');
   markerEl.className = 'music-marker';
   markerEl.innerHTML = `
-    <div class="marker-icon">🎵</div>
+    <div class="marker-icon" role="img" aria-label="Music marker">🎵</div>
     <div class="marker-pulse"></div>
   `;
   markerEl.style.cursor = 'pointer';
@@ -84,7 +84,7 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
       <div class="popup-content">
                 <div class="info-row">
           <div class="info-text">
-            <span class="info-label">📍 地点/Location</span>
+            <span class="info-label"><span role="img" aria-label="Map pin">📍</span> 地点/Location</span>
             <span class="info-value">${data.location_name || 'Unknown Location'}</span>
             ${data.location_name_en && data.location_name_en !== data.location_name ?
               `<small class="text-muted d-block">${data.location_name_en}</small>` : ''}
@@ -93,34 +93,29 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
 
         <div class="info-row">
           <div class="info-text">
-            <span class="info-label">📅 年份/Year</span>
+            <span class="info-label"><span role="img" aria-label="Calendar">📅</span> 年份/Year</span>
             <span class="info-value">${data.year || 'Unknown Year'}</span>
           </div>
         </div>
 
         <div class="info-row">
           <div class="info-text">
-            <span class="info-label">💿 专辑/Album</span>
-            <span class="info-value">${data.album || 'Unknown'}</span>
+            <span class="info-label"><span role="img" aria-label="Compact disc">💿</span> 专辑/Album</span>
+            <span class="info-value">${data.album || 'Unknown Album'}</span>
           </div>
         </div>
 
-        ${data.lyrics ? `
-        <div class="lyrics-section">
-          <div class="lyrics-header">
-            <div class="info-icon">💭</div>
-            <span class="info-label">歌词预览/Lyrics Preview</span>
-          </div>
-          <div class="lyrics-text" title="${data.lyrics}">
-            ${data.lyrics.substring(0, 120)}${data.lyrics.length > 120 ? '...' : ''}
+        <div class="info-row">
+          <div class="info-text">
+            <span class="info-label"><span role="img" aria-label="Scroll">📜</span> 歌词预览/Lyrics Preview</span>
+            <span class="info-value">${data.lyrics ? data.lyrics.substring(0, 100) + '...' : 'No lyrics available'}</span>
           </div>
         </div>
-        ` : ''}
 
         <div class="popup-actions">
-          <button class="youtube-btn" onclick="window.open('https://www.youtube.com/results?search_query=${encodeURIComponent(data.song + ' ' + data.Singer)}', '_blank')">
-            🎵 Listen on YouTube
-          </button>
+          <a href="${data.youtube_url || '#'}" target="_blank" rel="noopener noreferrer" class="youtube-btn" title="Listen on YouTube">
+            <span role="img" aria-label="Music note">🎵</span> Listen on YouTube
+          </a>
         </div>
       </div>
     </div>

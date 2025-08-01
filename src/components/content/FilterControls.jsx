@@ -64,7 +64,9 @@ const FilterControls = () => {
   return (
     <Card className="mb-3">
       <Card.Header className="d-flex justify-content-between align-items-center">
-        <h5 className="mb-0">🎵 Filter Songs</h5>
+        <h5 className="mb-0">
+          <span role="img" aria-label="Music note">🎵</span> Filter Songs
+        </h5>
         {hasActiveFilters && (
           <Button
             variant="outline-danger"
@@ -79,7 +81,9 @@ const FilterControls = () => {
       <Card.Body>
         <Form>
           <Form.Group className="mb-3">
-            <Form.Label>🎤 Artist</Form.Label>
+            <Form.Label>
+              <span role="img" aria-label="Microphone">🎤</span> Artist
+            </Form.Label>
             <Form.Select
               value={filters?.artist || ''}
               onChange={(e) => handleFilterChange('artist', e.target.value)}
@@ -93,7 +97,9 @@ const FilterControls = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>📍 Location</Form.Label>
+            <Form.Label>
+              <span role="img" aria-label="Map pin">📍</span> Location
+            </Form.Label>
             <Form.Select
               value={filters?.district || ''}
               onChange={(e) => handleFilterChange('district', e.target.value)}
@@ -107,7 +113,9 @@ const FilterControls = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>📅 Decade</Form.Label>
+            <Form.Label>
+              <span role="img" aria-label="Calendar">📅</span> Decade
+            </Form.Label>
             <Form.Select
               value={filters?.decade || ''}
               onChange={(e) => handleFilterChange('decade', e.target.value)}

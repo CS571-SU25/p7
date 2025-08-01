@@ -28,7 +28,7 @@ function App() {
         <nav className="app-header">
           <div className="main-navigation">
             <div className="nav-brand">
-              <h1>🎵 Hong Kong Music Atlas</h1>
+              <h1><span role="img" aria-label="Music note">🎵</span> Hong Kong Music Atlas</h1>
             </div>
             <ul className="nav-links">
               <li><a href="#/" className="nav-link">Home</a></li>
