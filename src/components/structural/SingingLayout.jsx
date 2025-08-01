@@ -1,25 +1,71 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, Outlet } from 'react-router';
+import { Link, Outlet, useLocation } from 'react-router';
 
 function SingingLayout() {
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
-    <div>
-      <Navbar bg="dark" variant="dark">
+    <div className="app-layout">
+      <Navbar
+        bg="dark"
+        variant="dark"
+        expand="lg"
+        className="app-header"
+        style={{
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}
+      >
         <Container>
-          <Navbar.Brand as={Link} to="/">
-            🎵 Singing Through the City
+          <Navbar.Brand as={Link} to="/" className="nav-brand">
+            <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800, color: 'white' }}>
+              🎵 Hong Kong Music Atlas
+            </h1>
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/map">Map</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-          </Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto nav-links">
+              <Nav.Link
+                as={Link}
+                to="/"
+                className={`nav-link ${isActive('/') ? 'active' : ''}`}
+                style={{ color: 'white' }}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/map"
+                className={`nav-link ${isActive('/map') ? 'active' : ''}`}
+                style={{ color: 'white' }}
+              >
+                Explore
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/about"
+                className={`nav-link ${isActive('/about') ? 'active' : ''}`}
+                style={{ color: 'white' }}
+              >
+                About
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div style={{ margin: "1rem" }}>
+
+      <main className="app-main">
         <Outlet />
-      </div>
+      </main>
+
+      <footer className="app-footer">
+        <p>&copy; 2025 Hong Kong Music Atlas. Exploring Hong Kong's musical geography.</p>
+      </footer>
     </div>
   );
 }

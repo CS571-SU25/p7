@@ -11,22 +11,41 @@ export const fetchMusicData = async () => {
     const csvText = await response.text();
     console.log('CSV data loaded, length:', csvText.length);
 
-    // Parse CSV
+    // Parse CSV with proper handling of quoted fields
     const lines = csvText.split('\n');
-    const headers = lines[0].split(',');
+    const headers = lines[0].split(',').map(h => h.trim());
 
     const data = lines.slice(1).map((line, index) => {
-      const values = line.split(',');
       const row = {};
+      let currentField = '';
+      let inQuotes = false;
+      let fieldIndex = 0;
 
-      headers.forEach((header, headerIndex) => {
-        let value = values[headerIndex] || '';
-        // Remove quotes if present
-        if (value.startsWith('"') && value.endsWith('"')) {
-          value = value.slice(1, -1);
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          // End of field
+          const header = headers[fieldIndex];
+          if (header) {
+            row[header] = currentField.trim();
+          }
+          currentField = '';
+          fieldIndex++;
+        } else {
+          currentField += char;
         }
-        row[header.trim()] = value;
-      });
+      }
+
+      // Add the last field
+      if (fieldIndex < headers.length) {
+        const header = headers[fieldIndex];
+        if (header) {
+          row[header] = currentField.trim();
+        }
+      }
 
       return row;
     }).filter(row => {

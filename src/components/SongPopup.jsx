@@ -1,19 +1,9 @@
 import React from 'react';
 import { useAudio } from '../contexts';
-import AudioPreview from './AudioPreview';
 
 const SongPopup = ({ song, place, onClose }) => {
   const { playPreview, stopAudio } = useAudio();
 
-  const handleAudioPreview = () => {
-    if (song?.previewUrl) {
-      playPreview({
-        url: song.previewUrl,
-        title: song.title,
-        artist: song.artist
-      });
-    }
-  };
 
   return (
     <div className="song-popup">
@@ -29,12 +19,6 @@ const SongPopup = ({ song, place, onClose }) => {
           <p><strong>Year:</strong> {song?.year || 'Unknown'}</p>
         </div>
 
-        {/* Audio Preview */}
-        <AudioPreview
-          song={song}
-          onPlay={handleAudioPreview}
-          onStop={stopAudio}
-        />
 
         {/* YouTube Link */}
         {song?.youtubeUrl && (

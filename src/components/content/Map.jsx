@@ -13,11 +13,12 @@ const Map = () => {
   const [mapboxToken, setMapboxToken] = useState(null);
   const { filters } = useMap();
 
+  // Get Mapbox token
   const fetchMapboxToken = async () => {
     // Hardcoded Mapbox token
-    const fallbackToken = 'pk.eyJ1IjoiaGF6ZWxhbmQzNDI3IiwiYSI6ImNsMnNkd3lsNzBqa2EzbHBhMWlsc2p4aHYifQ.Gjb8ntV5xhWPXBn1UCUw8A';
-    setMapboxToken(fallbackToken);
-    return fallbackToken;
+    const token = 'pk.eyJ1IjoiaGF6ZWxhbmQzNDI3IiwiYSI6ImNsMnNkd3lsNzBqa2EzbHBhMWlsc2p4aHYifQ.Gjb8ntV5xhWPXBn1UCUw8A';
+    setMapboxToken(token);
+    return token;
   };
 
   //clear all music markers
@@ -167,7 +168,7 @@ const Map = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100%', position: 'relative' }}>
+    <div style={{ height: '100%', width: '100%', position: 'relative' }}>
       <div ref={mapRef} style={{ height: '100%', width: '100%' }} />
 
       {/* Loading indicator */}

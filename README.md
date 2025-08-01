@@ -1,6 +1,6 @@
-# Singing Through the City
+# Hong Kong Music Atlas
 
-**Singing Through the City** is an interactive web map that explores the cultural geography of Hong Kong through the lens of Cantonese pop music. Many Canto-pop songs reference specific neighborhoods, landmarks, and streets—this project visualizes those lyrical references as a dynamic, map-based storytelling experience.
+**Hong Kong Music Atlas** is an interactive web map that explores the cultural geography of Hong Kong through the lens of Cantonese pop music. Many Canto-pop songs reference specific neighborhoods, landmarks, and streets—this project visualizes those lyrical references as a dynamic, map-based storytelling experience.
 
 ## Features
 
@@ -15,9 +15,6 @@
 
 - **Filter Controls:**
   Explore the map by artist, district, or decade to discover connections between music and place.
-
-- **Audio Preview on Hover:**
-  Hovering over a location plays a short musical sample, giving users a quick taste of the song.
 
 - **User Story Submission / Memory Wall:**
   Visitors can share personal memories related to specific songs or places (if time allows).

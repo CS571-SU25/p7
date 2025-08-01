@@ -1,6 +1,44 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 
+
+
+// Helper function to determine optimal popup anchor based on marker position
+const getOptimalAnchor = (map, coordinates) => {
+  const point = map.project(coordinates);
+  const container = map.getContainer();
+  const width = container.offsetWidth;
+  const height = container.offsetHeight;
+
+  // Define popup dimensions (approximate)
+  const popupWidth = 300;
+  const popupHeight = 200;
+
+  // Calculate available space in each direction
+  const spaceRight = width - point.x;
+  const spaceLeft = point.x;
+  const spaceTop = point.y;
+  const spaceBottom = height - point.y;
+
+  // Determine best anchor based on available space
+  if (spaceRight >= popupWidth && spaceBottom >= popupHeight) {
+    return 'bottom-right'; // Prefer bottom-right if space available
+  } else if (spaceLeft >= popupWidth && spaceBottom >= popupHeight) {
+    return 'bottom-left';
+  } else if (spaceRight >= popupWidth && spaceTop >= popupHeight) {
+    return 'top-right';
+  } else if (spaceLeft >= popupWidth && spaceTop >= popupHeight) {
+    return 'top-left';
+  } else if (spaceBottom >= popupHeight) {
+    return spaceRight > spaceLeft ? 'bottom-right' : 'bottom-left';
+  } else if (spaceTop >= popupHeight) {
+    return spaceRight > spaceLeft ? 'top-right' : 'top-left';
+  } else {
+    // Fallback to center if no good option
+    return 'center';
+  }
+};
+
 // Global variable to track the currently open popup
 let currentPopup = null;
 
@@ -27,28 +65,43 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
   `;
   markerEl.style.cursor = 'pointer';
 
-  // Create popup content
+  // Create popup content with enhanced styling
   const popupContent = `
     <div class="marker-popup">
       <div class="popup-header">
         <div class="popup-title">
-          <h4><a href="#" class="song-link">${data.song || 'Unknown Song'}</a></h4>
-          <span class="popup-subtitle"><a href="#" class="artist-link">${data.Singer || 'Unknown Artist'}</a></span>
+          <h4><a href="#/explore?search=${encodeURIComponent(data.song)}" class="song-link" title="Click to view full song details">${data.song || 'Unknown Song'}</a></h4>
+          <span class="popup-subtitle">
+            <a href="#/explore?search=${encodeURIComponent(data.Singer)}" class="artist-link" title="Click to search artist">
+              ${data.Singer ? data.Singer.split(',').map(name => name.trim()).join(', ') : 'Unknown Artist'}
+            </a>
+            ${data.singer_en && data.singer_en !== data.Singer ?
+              `<small class="text-muted d-block">${data.singer_en}</small>` : ''}
+          </span>
         </div>
       </div>
 
       <div class="popup-content">
-        <div class="info-row">
+                <div class="info-row">
           <div class="info-text">
-            <span class="info-label">Location</span>
-            <span class="info-value">${data.location_name_en || 'Unknown Location'}</span>
+            <span class="info-label">📍 地点/Location</span>
+            <span class="info-value">${data.location_name || 'Unknown Location'}</span>
+            ${data.location_name_en && data.location_name_en !== data.location_name ?
+              `<small class="text-muted d-block">${data.location_name_en}</small>` : ''}
           </div>
         </div>
 
         <div class="info-row">
           <div class="info-text">
-            <span class="info-label">Year</span>
+            <span class="info-label">📅 年份/Year</span>
             <span class="info-value">${data.year || 'Unknown Year'}</span>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-text">
+            <span class="info-label">💿 专辑/Album</span>
+            <span class="info-value">${data.album || 'Unknown'}</span>
           </div>
         </div>
 
@@ -56,20 +109,37 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
         <div class="lyrics-section">
           <div class="lyrics-header">
             <div class="info-icon">💭</div>
-            <span class="info-label">Lyrics Preview</span>
+            <span class="info-label">歌词预览/Lyrics Preview</span>
           </div>
-          <div class="lyrics-text">
+          <div class="lyrics-text" title="${data.lyrics}">
             ${data.lyrics.substring(0, 120)}${data.lyrics.length > 120 ? '...' : ''}
           </div>
         </div>
         ` : ''}
+
+        <div class="popup-actions">
+          <button class="youtube-btn" onclick="window.open('https://www.youtube.com/results?search_query=${encodeURIComponent(data.song + ' ' + data.Singer)}', '_blank')">
+            🎵 Listen on YouTube
+          </button>
+        </div>
       </div>
     </div>
   `;
 
-  // Create popup
+  // Create popup with smart positioning
+  const optimalAnchor = getOptimalAnchor(map, coordinates);
   const popup = new mapboxgl.Popup({
-    offset: 25,
+    offset: {
+      'top': [0, -10],
+      'top-left': [0, -10],
+      'top-right': [0, -10],
+      'bottom': [0, 10],
+      'bottom-left': [0, 10],
+      'bottom-right': [0, 10],
+      'left': [10, 0],
+      'right': [-10, 0]
+    },
+    anchor: optimalAnchor,
     closeButton: true,
     closeOnClick: false,
     className: 'music-popup'

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Card, Alert } from 'react-bootstrap';
 import { useMap } from '../../contexts';
 import { fetchMusicData } from '../../services/dataService';
 
@@ -53,26 +54,36 @@ const InformationCard = () => {
   const hasActiveFilters = filters.artist || filters.district || filters.decade;
 
   return (
-    <div className="information-card">
-      <h4>Music Locations</h4>
-      <p>
-        {hasActiveFilters ? (
-          <>
-            Showing <strong>{visibleItems}</strong> of <strong>{totalItems}</strong> locations
-          </>
-        ) : (
-          <>
-            <strong>{totalItems}</strong> music locations in Hong Kong
-          </>
-        )}
-      </p>
-      <p>Click on markers to explore songs and locations</p>
-      {hasActiveFilters && (
-        <p className="filter-note">
-          <em>Use filters above to narrow down your search</em>
+    <Card>
+      <Card.Header>
+        <h5 className="mb-0">🎵 Music Locations</h5>
+      </Card.Header>
+      <Card.Body>
+        <p className="mb-2">
+          {hasActiveFilters ? (
+            <>
+              Showing <strong>{visibleItems}</strong> of <strong>{totalItems}</strong> locations
+            </>
+          ) : (
+            <>
+              <strong>{totalItems}</strong> music locations in Hong Kong
+            </>
+          )}
         </p>
-      )}
-    </div>
+        <p className="mb-2">📍 Click on markers to explore songs and locations</p>
+        <p className="mb-3">🎤 Use filters to discover songs by artist, location, or decade</p>
+
+        {hasActiveFilters && (
+          <Alert variant="info" className="mb-3">
+            <em>💡 Use filters above to narrow down your search</em>
+          </Alert>
+        )}
+
+        <Alert variant="primary">
+          <strong>💡 Tip:</strong> Each marker shows lyrics preview and links to listen on YouTube
+        </Alert>
+      </Card.Body>
+    </Card>
   );
 };
 

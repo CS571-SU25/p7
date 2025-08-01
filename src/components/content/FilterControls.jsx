@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Card, Form, Button, Badge } from 'react-bootstrap';
 import { useMap } from '../../contexts';
 import { fetchMusicData } from '../../services/dataService';
 
@@ -61,87 +62,113 @@ const FilterControls = () => {
   const hasActiveFilters = filters.artist || filters.district || filters.decade;
 
   return (
-    <div className="filter-controls">
-      <div className="filter-header">
-        <h4>Filter Songs</h4>
+    <Card className="mb-3">
+      <Card.Header className="d-flex justify-content-between align-items-center">
+        <h5 className="mb-0">🎵 Filter Songs</h5>
         {hasActiveFilters && (
-          <button
-            className="clear-filters-btn"
+          <Button
+            variant="outline-danger"
+            size="sm"
             onClick={clearAllFilters}
+            title="Clear all filters"
           >
-            Clear All
-          </button>
+            ✕ Clear All
+          </Button>
         )}
-      </div>
+      </Card.Header>
+      <Card.Body>
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>🎤 Artist</Form.Label>
+            <Form.Select
+              value={filters?.artist || ''}
+              onChange={(e) => handleFilterChange('artist', e.target.value)}
+              title="Filter by artist"
+            >
+              <option value="">All Artists</option>
+              {filterOptions.artists.map(artist => (
+                <option key={artist} value={artist}>{artist}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-      <div className="filter-group">
-        <label htmlFor="artist-filter">Artist:</label>
-        <select
-          id="artist-filter"
-          value={filters?.artist || ''}
-          onChange={(e) => handleFilterChange('artist', e.target.value)}
-        >
-          <option value="">All Artists</option>
-          {filterOptions.artists.map(artist => (
-            <option key={artist} value={artist}>{artist}</option>
-          ))}
-        </select>
-      </div>
+          <Form.Group className="mb-3">
+            <Form.Label>📍 Location</Form.Label>
+            <Form.Select
+              value={filters?.district || ''}
+              onChange={(e) => handleFilterChange('district', e.target.value)}
+              title="Filter by location"
+            >
+              <option value="">All Locations</option>
+              {filterOptions.districts.map(district => (
+                <option key={district} value={district}>{district}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-      <div className="filter-group">
-        <label htmlFor="district-filter">Location:</label>
-        <select
-          id="district-filter"
-          value={filters?.district || ''}
-          onChange={(e) => handleFilterChange('district', e.target.value)}
-        >
-          <option value="">All Locations</option>
-          {filterOptions.districts.map(district => (
-            <option key={district} value={district}>{district}</option>
-          ))}
-        </select>
-      </div>
+          <Form.Group className="mb-3">
+            <Form.Label>📅 Decade</Form.Label>
+            <Form.Select
+              value={filters?.decade || ''}
+              onChange={(e) => handleFilterChange('decade', e.target.value)}
+              title="Filter by decade"
+            >
+              <option value="">All Decades</option>
+              {filterOptions.decades.map(decade => (
+                <option key={decade} value={decade}>{decade}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+        </Form>
 
-      <div className="filter-group">
-        <label htmlFor="decade-filter">Decade:</label>
-        <select
-          id="decade-filter"
-          value={filters?.decade || ''}
-          onChange={(e) => handleFilterChange('decade', e.target.value)}
-        >
-          <option value="">All Decades</option>
-          {filterOptions.decades.map(decade => (
-            <option key={decade} value={decade}>{decade}</option>
-          ))}
-        </select>
-      </div>
-
-      {hasActiveFilters && (
-        <div className="active-filters">
-          <h5>Active Filters:</h5>
-          <div className="filter-tags">
-            {filters.artist && (
-              <span className="filter-tag">
-                Artist: {filters.artist}
-                <button onClick={() => handleFilterChange('artist', '')}>×</button>
-              </span>
-            )}
-            {filters.district && (
-              <span className="filter-tag">
-                Location: {filters.district}
-                <button onClick={() => handleFilterChange('district', '')}>×</button>
-              </span>
-            )}
-            {filters.decade && (
-              <span className="filter-tag">
-                Decade: {filters.decade}
-                <button onClick={() => handleFilterChange('decade', '')}>×</button>
-              </span>
-            )}
+        {hasActiveFilters && (
+          <div className="mt-3">
+            <h6>Active Filters:</h6>
+            <div className="d-flex flex-wrap gap-2">
+              {filters.artist && (
+                <Badge bg="primary" className="d-flex align-items-center gap-1">
+                  Artist: {filters.artist}
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="p-0 text-white"
+                    onClick={() => handleFilterChange('artist', '')}
+                  >
+                    ×
+                  </Button>
+                </Badge>
+              )}
+              {filters.district && (
+                <Badge bg="info" className="d-flex align-items-center gap-1">
+                  Location: {filters.district}
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="p-0 text-white"
+                    onClick={() => handleFilterChange('district', '')}
+                  >
+                    ×
+                  </Button>
+                </Badge>
+              )}
+              {filters.decade && (
+                <Badge bg="success" className="d-flex align-items-center gap-1">
+                  Decade: {filters.decade}
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="p-0 text-white"
+                    onClick={() => handleFilterChange('decade', '')}
+                  >
+                    ×
+                  </Button>
+                </Badge>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </Card.Body>
+    </Card>
   );
 };
 
