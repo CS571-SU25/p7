@@ -70,13 +70,13 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
     <div class="marker-popup">
       <div class="popup-header">
         <div class="popup-title">
-          <h4><a href="#/explore?search=${encodeURIComponent(data.song)}" class="song-link" title="Click to view full song details">${data.song || 'Unknown Song'}</a></h4>
+          <h2><a href="#/explore?search=${encodeURIComponent(data.song)}" class="song-link" title="Click to view full song details" style="color: white">${data.song || 'Unknown Song'}</a></h2>
           <span class="popup-subtitle">
             <a href="#/explore?search=${encodeURIComponent(data.Singer)}" class="artist-link" title="Click to search artist">
               ${data.Singer ? data.Singer.split(',').map(name => name.trim()).join(', ') : 'Unknown Artist'}
             </a>
             ${data.singer_en && data.singer_en !== data.Singer ?
-              `<small class="text-muted d-block">${data.singer_en}</small>` : ''}
+              `<small class="text-muted d-block" style="color: white">${data.singer_en}</small>` : ''}
           </span>
         </div>
       </div>
@@ -113,8 +113,12 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
         </div>
 
         <div class="popup-actions">
-          <a href="javascript:void(0)" onclick="window.open('https://www.youtube.com/results?search_query=${encodeURIComponent(`${data.song} ${data.Singer}`)}', '_blank')" class="youtube-btn" title="Listen on YouTube">
-            <span role="img" aria-label="Music note">🎵</span> Listen on YouTube
+          <a href="javascript:void(0)" 
+             onclick="window.open('https://www.youtube.com/results?search_query=${encodeURIComponent(`${data.song} ${data.Singer}`)}', '_blank')" 
+             class="youtube-btn" 
+             title="Listen on YouTube"
+             style="color: #000000; background-color: #ffffff; padding: 8px 16px; border-radius: 4px; text-decoration: none; display: inline-block; font-weight: bold;">
+             🎵 Listen on YouTube
           </a>
         </div>
       </div>

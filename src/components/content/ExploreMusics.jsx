@@ -141,10 +141,11 @@ const ExploreMusics = () => {
 
           {/* Search Section */}
           <div className="search-section mb-4">
-            <Form onSubmit={handleSearch}>
+            <Form onSubmit={handleSearch} >
               <InputGroup size="lg">
                 <Form.Control
                   type="text"
+                  aria-label="Search songs"
                   placeholder="Search by song title, artist, location, lyrics, album, or songwriter..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -228,7 +229,7 @@ const ExploreMusics = () => {
                                 <Card.Header className="song-card-header">
                                   <div className="d-flex justify-content-between align-items-start">
                                     <div>
-                                      <h5 className="mb-1">{song.song || 'Unknown Song'}</h5>
+                                      <h2 className="mb-1">{song.song || 'Unknown Song'}</h2>
                                       <p className="mb-0 text-muted">{song.Singer || 'Unknown Artist'}</p>
                                                                   {hasMultipleVersions && (
                               <div className="version-indicator">
@@ -363,7 +364,7 @@ const ExploreMusics = () => {
                       <Card.Header className="song-card-header">
                         <div className="d-flex justify-content-between align-items-start">
                           <div>
-                            <h5 className="mb-1">{song.song || 'Unknown Song'}</h5>
+                            <h2 className="mb-1">{song.song || 'Unknown Song'}</h2>
                             <p className="mb-0 text-muted">{song.Singer || 'Unknown Artist'}</p>
                             {song.totalVersions && song.totalVersions > 1 && (
                               <div className="version-indicator">

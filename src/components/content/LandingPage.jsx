@@ -33,16 +33,16 @@ const LandingPage = () => {
               Start Exploring
             </Button>
           </div>
-          <Image src="/p7/images/hongkongNight.jpg" style={{borderRadius: '10px'}} alt="Landing Page Image" className="img-fluid" />
+          <Image src="/p7/images/hongkongNight.jpg" style={{borderRadius: '10px'}} alt="HongKong View" className="img-fluid" />
           <div className="mt-5">
             <h2 className="text-center mb-4" style={{ color: '#333' }}>What You'll Discover</h2>
             <Row>
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h4 className="h5">
+                    <h3 className="h3">
                       <span role="img" aria-label="Music note">🎵</span> Song Stories
-                    </h4>
+                    </h3>
                     <p className="text-muted">Lyrics in Chinese with song details</p>
                   </Card.Body>
                 </Card>
@@ -50,9 +50,9 @@ const LandingPage = () => {
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h4 className="h5">
+                    <h3 className="h3">
                       <span role="img" aria-label="World map">🗺️</span> Interactive Map
-                    </h4>
+                    </h3>
                     <p className="text-muted">Click pins to explore Hong Kong's musical geography</p>
                   </Card.Body>
                 </Card>
@@ -60,9 +60,9 @@ const LandingPage = () => {
               <Col md={4} className="mb-3">
                 <Card className="h-100 text-center">
                   <Card.Body>
-                    <h4 className="h5">
+                    <h3 className="h3">
                       <span role="img" aria-label="Book">📖</span> Cultural Context
-                    </h4>
+                    </h3>
                     <p className="text-muted">Historical notes about each location's significance</p>
                   </Card.Body>
                 </Card>

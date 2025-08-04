@@ -12,7 +12,7 @@ const AboutPage = () => {
             <Col md={6} className="mb-4">
               <Card>
                 <Card.Header>
-                  <h3 className="h4 mb-0">Project Overview</h3>
+                  <h2 className="h4 mb-0">Project Overview</h2>
                 </Card.Header>
                 <Card.Body>
                   <p>
@@ -28,7 +28,7 @@ const AboutPage = () => {
             <Col md={6} className="mb-4">
               <Card>
                 <Card.Header>
-                  <h3 className="h4 mb-0">Cultural Significance</h3>
+                  <h2 className="h4 mb-0">Cultural Significance</h2>
                 </Card.Header>
                 <Card.Body>
                   <p>
@@ -44,7 +44,7 @@ const AboutPage = () => {
             <Col md={6} className="mb-4">
               <Card>
                 <Card.Header>
-                  <h3 className="h4 mb-0">Technical Details</h3>
+                  <h2 className="h4 mb-0">Technical Details</h2>
                 </Card.Header>
                 <Card.Body>
                   <ul className="list-unstyled">
@@ -60,7 +60,7 @@ const AboutPage = () => {
             <Col md={6} className="mb-4">
               <Card>
                 <Card.Header>
-                  <h3 className="h4 mb-0">Data Sources</h3>
+                  <h2 className="h4 mb-0">Data Sources</h2>
                 </Card.Header>
                 <Card.Body>
                   <p>
@@ -77,7 +77,7 @@ const AboutPage = () => {
             <Col md={12}>
               <Card>
                 <Card.Header>
-                  <h3 className="h4 mb-0">Contributing</h3>
+                  <h2 className="h4 mb-0">Contributing</h2>
                 </Card.Header>
                 <Card.Body>
                   <p>

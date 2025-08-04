@@ -64,9 +64,9 @@ const FilterControls = () => {
   return (
     <Card className="mb-3">
       <Card.Header className="d-flex justify-content-between align-items-center">
-        <h5 className="mb-0">
+        <h2 className="mb-0">
           <span role="img" aria-label="Music note">🎵</span> Filter Songs
-        </h5>
+        </h2>
         {hasActiveFilters && (
           <Button
             variant="outline-danger"
@@ -81,10 +81,12 @@ const FilterControls = () => {
       <Card.Body>
         <Form>
           <Form.Group className="mb-3">
-            <Form.Label>
+            <Form.Label htmlFor="artist-select">
               <span role="img" aria-label="Microphone">🎤</span> Artist
             </Form.Label>
             <Form.Select
+              id="artist-select"
+              aria-label="Filter by artist"
               value={filters?.artist || ''}
               onChange={(e) => handleFilterChange('artist', e.target.value)}
               title="Filter by artist"
@@ -97,10 +99,12 @@ const FilterControls = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>
+            <Form.Label htmlFor="location-select">
               <span role="img" aria-label="Map pin">📍</span> Location
             </Form.Label>
             <Form.Select
+              id="location-select"
+              aria-label="Filter by location"
               value={filters?.district || ''}
               onChange={(e) => handleFilterChange('district', e.target.value)}
               title="Filter by location"
@@ -113,10 +117,12 @@ const FilterControls = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>
+            <Form.Label htmlFor="decade-select">
               <span role="img" aria-label="Calendar">📅</span> Decade
             </Form.Label>
             <Form.Select
+              id="decade-select"
+              aria-label="Filter by decade"
               value={filters?.decade || ''}
               onChange={(e) => handleFilterChange('decade', e.target.value)}
               title="Filter by decade"
