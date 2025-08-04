@@ -33,7 +33,7 @@ const LandingPage = () => {
               Start Exploring
             </Button>
           </div>
-          <Image src="src\assets\hongkongNight.jpg" style={{borderRadius: '10px'}} alt="Landing Page Image" className="img-fluid" />
+          <Image src="/p7/images/hongkongNight.jpg" style={{borderRadius: '10px'}} alt="Landing Page Image" className="img-fluid" />
           <div className="mt-5">
             <h2 className="text-center mb-4" style={{ color: '#333' }}>What You'll Discover</h2>
             <Row>
