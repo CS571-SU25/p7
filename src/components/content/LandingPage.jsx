@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Image} from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 
 const LandingPage = () => {
@@ -33,7 +33,7 @@ const LandingPage = () => {
               Start Exploring
             </Button>
           </div>
-
+          <Image src="src\assets\hongkongNight.jpg" style={{borderRadius: '10px'}} alt="Landing Page Image" className="img-fluid" />
           <div className="mt-5">
             <h2 className="text-center mb-4" style={{ color: '#333' }}>What You'll Discover</h2>
             <Row>
@@ -43,7 +43,7 @@ const LandingPage = () => {
                     <h4 className="h5">
                       <span role="img" aria-label="Music note">🎵</span> Song Stories
                     </h4>
-                    <p className="text-muted">Lyrics in Chinese and English with song details</p>
+                    <p className="text-muted">Lyrics in Chinese with song details</p>
                   </Card.Body>
                 </Card>
               </Col>

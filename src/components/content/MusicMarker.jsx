@@ -113,7 +113,7 @@ MusicMarker.addToMap = (data, map, parseLocation) => {
         </div>
 
         <div class="popup-actions">
-          <a href="${data.youtube_url || '#'}" target="_blank" rel="noopener noreferrer" class="youtube-btn" title="Listen on YouTube">
+          <a href="javascript:void(0)" onclick="window.open('https://www.youtube.com/results?search_query=${encodeURIComponent(`${data.song} ${data.Singer}`)}', '_blank')" class="youtube-btn" title="Listen on YouTube">
             <span role="img" aria-label="Music note">🎵</span> Listen on YouTube
           </a>
         </div>

@@ -64,7 +64,8 @@ const AboutPage = () => {
                 </Card.Header>
                 <Card.Body>
                   <p>
-                    Song data includes lyrics in both Chinese and English, artist information,
+                    Song data includes lyrics in both Chinese and will include English translation in the future.
+                    Other information includes artist information,
                     album covers, YouTube links, and historical context for each referenced
                     location. The database is designed to grow over time as more songs
                     are discovered and added.
@@ -82,7 +83,8 @@ const AboutPage = () => {
                   <p>
                     We welcome contributions and suggestions! If you know of a Canto-pop
                     song that references a specific Hong Kong location, or if you'd like
-                    to help improve the project, please get in touch.
+                    to help improve the project, please get in touch. <br />
+                    <strong>Email: qzhang533@wisc.edu </strong>
                   </p>
                 </Card.Body>
               </Card>
